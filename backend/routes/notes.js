@@ -18,7 +18,7 @@ router.get('/fetchallnotes',fetchuser,async (req, res)=>{
 
 
 //ROUTE 2 ADD a new notes using: POST "/api/notes/addnote".   login required
-router.get('/addnote',fetchuser,[ 
+router.post('/addnote',fetchuser,[ 
     body('title','Enter a valid title').isLength({ min: 3 }),
     body('description','Description must be atleast 5 characters').isLength({ min: 5 }),
     ],async (req, res)=>{
@@ -47,7 +47,6 @@ router.put('/updatenote/:id',fetchuser,async (req, res)=>{
     const {title, description, tag} = req.body;
     try {
         
-    
     //Create a newNote object
     const newNote ={};
     if(title){newNote.title = title};
